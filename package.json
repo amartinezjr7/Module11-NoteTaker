@@ -9,6 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
-  }
+    "express": "^4.17.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amartinezjr7/Module11-NoteTaker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/amartinezjr7/Module11-NoteTaker/issues"
+  },
+  "homepage": "https://github.com/amartinezjr7/Module11-NoteTaker#readme"
 }
