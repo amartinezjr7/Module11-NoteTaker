@@ -4,6 +4,8 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+const notesDb = require('./db/db.json');
+
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.json());
@@ -24,21 +26,31 @@ app.get("/api/notes", (req,res) =>{
     res.sendFile(path.join(__dirname,"/db/db.json"));
 });
 
+app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, './public/index.html'));
+})
+
 app.post("/api/notes", (req, res)=>{
     let filePath = path.join(__dirname,"/db/db.json");
     let userNote = req.body;
 
-   fs.watchFile(filePath, JSON.stringify('./db/db'), function (err) {
+    
+    notesDb.push(userNote);
+
+
+   fs.writeFile(filePath, JSON.stringify(notesDb), function (err) {
        if (err) throw err;
 
        console.log('file is updated');
        
-   }) 
+   }); 
 
     res.json(userNote);
 });
 
+function saveNewNote(){
 
+}
 
 app.listen(PORT,() => {
     console.log(`API Server listening on port ${PORT}`);
