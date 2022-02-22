@@ -24,9 +24,19 @@ app.get("/api/notes", (req,res) =>{
     res.sendFile(path.join(__dirname,"/db/db.json"));
 });
 
+app.post("/api/notes", (req, res)=>{
+    let filePath = path.join(__dirname,"/db/db.json");
+    let userNote = req.body;
 
+   fs.watchFile(filePath, JSON.stringify('./db/db'), function (err) {
+       if (err) throw err;
 
+       console.log('file is updated');
+       
+   }) 
 
+    res.json(userNote);
+});
 
 
 
