@@ -63,6 +63,30 @@ app.post("/api/notes", (req, res)=>{
     res.json(userNote);
 });
 
+app.delete("/api/notes/:id", (req, res) =>{
+    let filePath = path.join(__dirname,"/db/db.json");
+
+    for(var i = 0; i < notesDb.length; i++){
+
+        if(notesDb[i].id = req.params.id){
+            notesDb.splice(i, 1);
+             fs.writeFile(filePath, JSON.stringify(notesDb), function (err) {
+        if (err) throw err;
+ 
+        console.log('file is deleted');
+        
+    }); 
+            
+            break;
+        }
+    }
+
+   
+ 
+     res.json(notesDb);
+
+});
+
 
 
 app.listen(PORT,() => {
