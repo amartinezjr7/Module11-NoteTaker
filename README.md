@@ -25,6 +25,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 - [User-Story](#User-Story)
 - [Installation](#Installation)
 - [Usage](#usage)
+- [Heroku](#Heroku)
 - [challanges](#challanges)
 - [license](#license)
 - [creator-info](#creator-info)
@@ -42,6 +43,10 @@ type npm i and that packages will automatically load
 ## Usage
 
 This produce is for use in organizing, creating and deleting notes for your everyday life.
+
+## Heroku
+
+deployed wesite: ![NoteTaker](https://frozen-mesa-12974.herokuapp.com/)
 
 ## Challanges
 
