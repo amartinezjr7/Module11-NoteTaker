@@ -30,9 +30,24 @@ app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, './public/index.html'));
 })
 
+
 app.post("/api/notes", (req, res)=>{
     let filePath = path.join(__dirname,"/db/db.json");
     let userNote = req.body;
+
+    let topNote = 100;
+    let currentNote = 99;
+
+    for (var i =0; i < notesDb.length; i++){
+        var newUserNote = notesDb[i];
+        
+        if(newUserNote.id > topNote){
+            topNote = newUserNote.id;
+
+        }
+    }
+
+    newUserNote.id = topNote +1;
 
     
     notesDb.push(userNote);
@@ -48,9 +63,7 @@ app.post("/api/notes", (req, res)=>{
     res.json(userNote);
 });
 
-function saveNewNote(){
 
-}
 
 app.listen(PORT,() => {
     console.log(`API Server listening on port ${PORT}`);
